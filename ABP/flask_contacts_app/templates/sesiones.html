@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOGI - INICIO</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sesiones.css') }}">  
+  <style>
+    /* ESTILO PARA EL CANVAS EN EL FONDO */
+    #animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas al fondo -->
+  <canvas id="animation"></canvas>
+
+<div class="banner">
+  <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Logo" class="MainLogo">
+
+  <div class="banner-text">
+    <div class="glow-text" data-text="MOGI - Mental Outreach and Grow Iniciative">
+      MOGI - Mental Outreach and Grow Iniciative
+    </div>
+    <p class="banner-subtitle">Descubre, Comprende, Sana</p>
+
+    <!-- Botones justo debajo del subtitulo -->
+      <!-- Botón "Inicio" -->
+      <div class="dropdown">      
+      <form action="{{ url_for('index') }}" method="GET">
+        <button type="submit" class="btn-pulse">Inicio</button>
+      </form>
+      </div> 
+
+      <!-- Botón "Saber más" -->
+      <button class="btn-pulse" onclick="showContactInfo()">Saber más</button>
+
+      <!-- ExpresARTE -->
+      <div class="dropdown">
+        <button class="btn-pulse">ExpresARTE</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('chatbot') }}">Hablar con MOGI</a>
+          <a href="{{ url_for('diario_view') }}">Mi diario</a>
+        </div>
+      </div>
+
+      <!-- Salud Mental -->
+      <div class="dropdown">
+        <button class="btn-pulse">Salud Mental</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('galeria') }}">Galería</a>    
+          <a href="{{ url_for('ansiedad') }}">Ansiedad</a>                
+          <a href="{{ url_for('depresion') }}">Depresión</a>
+          <a href="{{ url_for('insomnio') }}">Insomnio</a>
+          <a href="{{ url_for('anorexia') }}">Anorexia</a>
+        </div>
+      </div>
+
+      <!-- Servicios -->
+      <div class="dropdown">
+        <button class="btn-pulse">Servicios</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('evaluacionesiniciales') }}">Evaluaciones iniciales</a>
+          <a href="{{ url_for('sesiones') }}">Sesiones de acompañamiento</a>
+          <a href="{{ url_for('ejercicios') }}">Ejercicios</a>          
+        </div>
+      </div>
+
+      <!-- Configuración -->
+    <div class="dropdown">   
+      {% if rol == "admin" %}
+      <form action="{{ url_for('configuracion') }}" method="GET">
+        <button type="submit" class="btn-pulse">Configuración</button>
+      </form>
+      {% endif %}
+    </div>
+    <!-- 👆 Aquí termina el grupo de botones -->
+  </div>
+
+</div> <!-- Cierra banner -->
+    
+    <!-- Contenido principal de las sesiones -->
+    <div class="container">
+        <h2 class="header-h2">¿Cómo podemos ayudarte?</h2>
+        <p>Si estás interesado en nuestras sesiones de acompañamiento, por favor completa el siguiente formulario para que podamos ofrecerte el mejor servicio posible.</p>
+
+        <form id="sesion-form" method="post" action="#">
+            <label for="nombre" class="forms-label">🔑 Nombre Completo:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+            <label for="email" class="forms-label">📧 Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+
+            <label for="sesion" class="forms-label">💬 ¿En qué área necesitas acompañamiento?</label>
+            <textarea id="sesion" name="sesion" rows="5" placeholder="Describe brevemente el motivo de tu consulta" required></textarea>
+
+            <button type="submit" class="forms-button">Solicitar Sesión</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/evaluacionesiniciales.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>    
+
+</body>
+</html>

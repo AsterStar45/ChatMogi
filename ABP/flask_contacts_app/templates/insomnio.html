@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOGI - INICIO</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/infopages.css') }}">
+  <style>
+    /* ESTILO PARA EL CANVAS EN EL FONDO */
+    #animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas al fondo -->
+  <canvas id="animation"></canvas>
+
+<div class="banner">
+  <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Logo" class="MainLogo">
+
+  <div class="banner-text">
+    <div class="glow-text" data-text="MOGI - Mental Outreach and Grow Iniciative">
+      MOGI - Mental Outreach and Grow Iniciative
+    </div>
+    <p class="banner-subtitle">Descubre, Comprende, Sana</p>
+
+    <!-- Botones justo debajo del subtitulo -->
+      <!-- Botón "Inicio" -->
+      <div class="dropdown">      
+      <form action="{{ url_for('index') }}" method="GET">
+        <button type="submit" class="btn-pulse">Inicio</button>
+      </form>
+      </div> 
+
+      <!-- Botón "Saber más" -->
+      <button class="btn-pulse" onclick="showContactInfo()">Saber más</button>
+
+      <!-- ExpresARTE -->
+      <div class="dropdown">
+        <button class="btn-pulse">ExpresARTE</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('chatbot') }}">Hablar con MOGI</a>
+          <a href="{{ url_for('diario_view') }}">Mi diario</a>
+        </div>
+      </div>
+
+      <!-- Salud Mental -->
+      <div class="dropdown">
+        <button class="btn-pulse">Salud Mental</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('galeria') }}">Galería</a>    
+          <a href="{{ url_for('ansiedad') }}">Ansiedad</a>                
+          <a href="{{ url_for('depresion') }}">Depresión</a>
+          <a href="{{ url_for('insomnio') }}">Insomnio</a>
+          <a href="{{ url_for('anorexia') }}">Anorexia</a>
+        </div>
+      </div>
+
+      <!-- Servicios -->
+      <div class="dropdown">
+        <button class="btn-pulse">Servicios</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('evaluacionesiniciales') }}">Evaluaciones iniciales</a>
+          <a href="{{ url_for('sesiones') }}">Sesiones de acompañamiento</a>
+          <a href="{{ url_for('ejercicios') }}">Ejercicios</a>          
+        </div>
+      </div>
+
+      <!-- Configuración -->
+    <div class="dropdown">   
+      {% if rol == "admin" %}
+      <form action="{{ url_for('configuracion') }}" method="GET">
+        <button type="submit" class="btn-pulse">Configuración</button>
+      </form>
+      {% endif %}
+    </div>
+    <!-- 👆 Aquí termina el grupo de botones -->
+  </div>
+
+</div> <!-- Cierra banner -->
+    
+<!--INFO PRINCIPAL-->
+<main class="flex-container">
+  <div class="text-content">
+    <section>
+      <h2>¿Qué es el insomnio?</h2>
+      <p>
+        El insomnio es un trastorno del sueño que dificulta conciliar el sueño, permanecer dormido o lograr un descanso reparador. Puede ser ocasional o crónico, y afecta significativamente la calidad de vida, el estado de ánimo y el rendimiento diario.
+      </p>
+    </section>
+
+    <section>
+      <p>
+        Muchas personas experimentan insomnio temporal debido al estrés, cambios en el entorno o hábitos irregulares de sueño. Sin embargo, cuando se vuelve persistente, puede requerir tratamiento profesional.
+      </p>
+      <ul>
+        <li>Dificultad para conciliar el sueño.</li>
+        <li>Despertares frecuentes durante la noche.</li>
+        <li>Despertar demasiado temprano.</li>
+        <li>Sensación de cansancio al despertar.</li>
+        <li>Irritabilidad o ansiedad durante el día.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Síntomas principales</h2>
+      <ul>
+        <li>Falta de energía durante el día.</li>
+        <li>Problemas de memoria o concentración.</li>
+        <li>Somnolencia diurna excesiva.</li>
+        <li>Cambios de humor o irritabilidad.</li>
+        <li>Preocupación constante por el sueño.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tratamientos recomendados</h2>
+      <p>
+        El tratamiento del insomnio incluye terapia cognitivo-conductual, establecer rutinas de sueño saludables, evitar estimulantes antes de dormir y crear un ambiente propicio para el descanso. En algunos casos, pueden prescribirse medicamentos a corto plazo. Las técnicas de relajación, la meditación y el mindfulness también pueden ser útiles para mejorar el sueño.
+      </p>
+    </section>
+  </div>
+
+        <div class="classes__image">
+        <img src="{{ url_for('static', filename='css/G_Insomnio.png') }}" alt="insomnio">
+        <div class="classes__image--border"></div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+</html>

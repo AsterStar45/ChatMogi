@@ -1,0 +1,129 @@
+/* Estilos generales del cuerpo */
+.config-body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado */
+.config-header {
+    background-color: #4CAF50; /* Color verde */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.config-header h1 {
+    margin: 0;
+}
+
+.config-header p {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+/* Sección principal */
+.config-section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #121212;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 200px;
+}
+
+.config-section h2 {
+    font-size: 1.4em;
+    color: #ddd;
+}
+
+.config-section p {
+    font-size: 1em;
+    color: #ddd;
+}
+
+/* Tabla de usuarios */
+.config-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.config-table th,
+.config-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #2e2e2e;
+    color: #ddd;    
+}
+
+.config-table th {
+    background-color: #2e2e2e;
+    font-weight: bold;
+    color: #ddd;
+}
+
+/* Botones de la tabla */
+.config-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.config-btn:hover {
+    background-color: #45a049;
+}
+
+/* Formulario de eliminación */
+.config-delete-form {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.config-delete-form input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #2e2e2e;
+    border-radius: 5px;
+    width: 70%;
+    background-color: #2e2e2e;;
+    color: #ddd;
+}
+
+.config-delete-form button {
+    padding: 10px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.config-delete-form button:hover {
+    background-color: #e53935;
+}
+
+/* Mensajes */
+.config-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #4CAF50;
+}
+
+/* Estilos de error */
+.config-error {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #f44336;
+}

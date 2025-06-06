@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat con Mogi</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+  <style>
+    #animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo animado -->
+  <canvas id="animation"></canvas>
+
+  <!-- Banner superior -->
+  <div class="banner">
+    <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Logo" class="MainLogo">
+
+    <div class="banner-text">
+      <div class="glow-text" data-text="MOGI - Mental Outreach and Grow Iniciative">
+        MOGI - Mental Outreach and Grow Iniciative
+      </div>
+      <p class="banner-subtitle">Descubre, Comprende, Sana</p>
+
+      <!-- Botones -->
+      <div class="dropdown">
+        <form action="{{ url_for('index') }}" method="GET">
+          <button type="submit" class="btn-pulse">Inicio</button>
+        </form>
+      </div>
+
+      <button class="btn-pulse" onclick="showContactInfo()">Saber más</button>
+
+      <div class="dropdown">
+        <button class="btn-pulse">ExpresARTE</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('chatbot') }}">Hablar con MOGI</a>
+          <a href="{{ url_for('diario_view') }}">Mi diario</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn-pulse">Salud Mental</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('galeria') }}">Galería</a>
+          <a href="{{ url_for('ansiedad') }}">Ansiedad</a>
+          <a href="{{ url_for('depresion') }}">Depresión</a>
+          <a href="{{ url_for('insomnio') }}">Insomnio</a>
+          <a href="{{ url_for('anorexia') }}">Anorexia</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn-pulse">Servicios</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('evaluacionesiniciales') }}">Evaluaciones iniciales</a>
+          <a href="{{ url_for('sesiones') }}">Sesiones de acompañamiento</a>
+          <a href="{{ url_for('ejercicios') }}">Ejercicios</a>
+        </div>
+      </div>
+
+      {% if rol == "admin" %}
+      <div class="dropdown">
+        <form action="{{ url_for('configuracion') }}" method="GET">
+          <button type="submit" class="btn-pulse">Configuración</button>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Chatbot -->
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>¡Hola, {{ usuario }}! | Chat con Mogi</h2>
+    </div>
+    <div class="chat-box" id="conversacion">
+      <div class="mogi-bot-message">
+        <div style="display: flex; align-items: center;">
+          <img src="{{ url_for('static', filename='css/user_mogi.png') }}" alt="MOGI" class="mogi-avatar">
+          <div><strong>Mogi:</strong> Hola, soy Mogi. ¿Cómo te sientes hoy?</div>
+        </div>
+      </div>
+    </div>
+    <div class="input-box">
+      <input type="text" id="mensaje" placeholder="Escribe tu mensaje..." onkeydown="detectarEnter(event)">
+      <button id="enviar" onclick="enviarMensaje()">Enviar</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>

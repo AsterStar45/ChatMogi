@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOGI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+</head>
+<body>
+  <div class="box">
+    <span class="borderLine"></span>
+    <form action="" method="POST">
+      <h2>INGRESAR</h2>
+
+      {% if error %}
+        <p style="color: red; text-align:center;">{{ error }}</p>
+      {% endif %}
+
+      <div class="inputBox">
+        <input type="text" name="nombre" required>
+        <span>Usuario</span>
+        <i></i>
+      </div>
+
+      <div class="inputBox">
+        <input type="password" name="contraseña" required>
+        <span>Contraseña</span>
+        <i></i>
+      </div>
+
+        <div class="links">
+                <a href="#">Olvidé la contraseña</a>
+                <a href="#">Registrarse</a>
+            </div>
+
+      <input type="submit" value="Ingresar" id="submit" value="Login">
+
+    </form>
+  </div>
+</body>
+</html>

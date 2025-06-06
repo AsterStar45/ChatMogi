@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOGI - INICIO</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/infopages.css') }}">
+  <style>
+    /* ESTILO PARA EL CANVAS EN EL FONDO */
+    #animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas al fondo -->
+  <canvas id="animation"></canvas>
+
+<div class="banner">
+  <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Logo" class="MainLogo">
+
+  <div class="banner-text">
+    <div class="glow-text" data-text="MOGI - Mental Outreach and Grow Iniciative">
+      MOGI - Mental Outreach and Grow Iniciative
+    </div>
+    <p class="banner-subtitle">Descubre, Comprende, Sana</p>
+
+    <!-- Botones justo debajo del subtitulo -->
+      <!-- Botón "Inicio" -->
+      <div class="dropdown">      
+      <form action="{{ url_for('index') }}" method="GET">
+        <button type="submit" class="btn-pulse">Inicio</button>
+      </form>
+      </div> 
+
+      <!-- Botón "Saber más" -->
+      <button class="btn-pulse" onclick="showContactInfo()">Saber más</button>
+
+      <!-- ExpresARTE -->
+      <div class="dropdown">
+        <button class="btn-pulse">ExpresARTE</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('chatbot') }}">Hablar con MOGI</a>
+          <a href="{{ url_for('diario_view') }}">Mi diario</a>
+        </div>
+      </div>
+
+      <!-- Salud Mental -->
+      <div class="dropdown">
+        <button class="btn-pulse">Salud Mental</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('galeria') }}">Galería</a>    
+          <a href="{{ url_for('ansiedad') }}">Ansiedad</a>                
+          <a href="{{ url_for('depresion') }}">Depresión</a>
+          <a href="{{ url_for('insomnio') }}">Insomnio</a>
+          <a href="{{ url_for('anorexia') }}">Anorexia</a>
+        </div>
+      </div>
+
+      <!-- Servicios -->
+      <div class="dropdown">
+        <button class="btn-pulse">Servicios</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('evaluacionesiniciales') }}">Evaluaciones iniciales</a>
+          <a href="{{ url_for('sesiones') }}">Sesiones de acompañamiento</a>
+          <a href="{{ url_for('ejercicios') }}">Ejercicios</a>          
+        </div>
+      </div>
+
+      <!-- Configuración -->
+    <div class="dropdown">   
+      {% if rol == "admin" %}
+      <form action="{{ url_for('configuracion') }}" method="GET">
+        <button type="submit" class="btn-pulse">Configuración</button>
+      </form>
+      {% endif %}
+    </div>
+    <!-- 👆 Aquí termina el grupo de botones -->
+  </div>
+
+</div> <!-- Cierra banner -->
+    
+    <!--INFO PRINCIPAL-->
+    <main class="flex-container">
+        <div class="text-content">
+            <section>
+                <h2>¿Qué es la depresión?</h2>
+                <p>
+                    La depresión es un trastorno emocional que causa un sentimiento de tristeza constante y una pérdida de interés en realizar diferentes actividades. También denominada «trastorno depresivo mayor» o «depresión clínica», afecta los sentimientos, los pensamientos y el comportamiento de una persona, y puede causar una variedad de problemas físicos y emocionales.
+                </p>
+            </section>
+
+            <section>
+                <p>
+                    La mayoría de las personas con depresión se sienten mejor con medicamentos, con psicoterapia o con ambos.
+                </p>
+                <ul>
+                    <li>Sentimientos persistentes de tristeza o vacío.</li>
+                    <li>Pérdida de interés en actividades.</li>
+                    <li>Problemas de sueño.</li>
+                    <li>Cansancio o fatiga.</li>
+                    <li>Dificultad para concentrarse.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Síntomas principales</h2>
+                <ul>
+                    <li>Sentimientos persistentes de tristeza o vacío.</li>
+                    <li>Pérdida de interés en actividades.</li>
+                    <li>Cambios en apetito y peso.</li>
+                    <li>Problemas de sueño.</li>
+                    <li>Fatiga y falta de energía.</li>
+                    <li>Sentimientos de culpa o inutilidad.</li>
+                    <li>Dificultades para concentrarse.</li>
+                    <li>Inquietud o irritabilidad.</li>
+                    <li>Dolores físicos inexplicables.</li>
+                    <li>Pensamientos de muerte o suicidio.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Tratamientos recomendados</h2>
+                <p>
+                    Los tratamientos incluyen terapia psicológica, medicación o una combinación de ambas. Es importante buscar ayuda profesional para superar la depresión. Además de la terapia y medicación, se pueden considerar cambios en el estilo de vida, como realizar ejercicio regularmente, llevar una dieta equilibrada y establecer rutinas que promuevan el bienestar emocional.
+                </p>
+            </section>
+        </div>
+
+        <div class="classes__image">
+        <img src="{{ url_for('static', filename='css/G_Depresion.png') }}" alt="depresion">
+        <div class="classes__image--border"></div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+</html>

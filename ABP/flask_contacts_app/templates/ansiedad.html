@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOGI - INICIO</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/infopages.css') }}">
+  <style>
+    /* ESTILO PARA EL CANVAS EN EL FONDO */
+    #animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas al fondo -->
+  <canvas id="animation"></canvas>
+
+<div class="banner">
+  <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Logo" class="MainLogo">
+
+  <div class="banner-text">
+    <div class="glow-text" data-text="MOGI - Mental Outreach and Grow Iniciative">
+      MOGI - Mental Outreach and Grow Iniciative
+    </div>
+    <p class="banner-subtitle">Descubre, Comprende, Sana</p>
+
+    <!-- Botones justo debajo del subtitulo -->
+      <!-- Botón "Inicio" -->
+      <div class="dropdown">      
+      <form action="{{ url_for('index') }}" method="GET">
+        <button type="submit" class="btn-pulse">Inicio</button>
+      </form>
+      </div> 
+
+      <!-- Botón "Saber más" -->
+      <button class="btn-pulse" onclick="showContactInfo()">Saber más</button>
+      
+      <!-- ExpresARTE -->
+      <div class="dropdown">
+        <button class="btn-pulse">ExpresARTE</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('chatbot') }}">Hablar con MOGI</a>
+          <a href="{{ url_for('diario_view') }}">Mi diario</a>
+        </div>
+      </div>
+      <!-- Salud Mental -->
+      <div class="dropdown">
+        <button class="btn-pulse">Salud Mental</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('galeria') }}">Galería</a>    
+          <a href="{{ url_for('ansiedad') }}">Ansiedad</a>                
+          <a href="{{ url_for('depresion') }}">Depresión</a>
+          <a href="{{ url_for('insomnio') }}">Insomnio</a>
+          <a href="{{ url_for('anorexia') }}">Anorexia</a>
+        </div>
+      </div>
+
+      <!-- Servicios -->
+      <div class="dropdown">
+        <button class="btn-pulse">Servicios</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('evaluacionesiniciales') }}">Evaluaciones iniciales</a>
+          <a href="{{ url_for('sesiones') }}">Sesiones de acompañamiento</a>
+          <a href="{{ url_for('ejercicios') }}">Ejercicios</a>          
+        </div>
+      </div>
+
+      <!-- Configuración -->
+    <div class="dropdown">   
+      {% if rol == "admin" %}
+      <form action="{{ url_for('configuracion') }}" method="GET">
+        <button type="submit" class="btn-pulse">Configuración</button>
+      </form>
+      {% endif %}
+    </div>
+    <!-- 👆 Aquí termina el grupo de botones -->
+  </div>
+
+</div> <!-- Cierra banner -->
+    
+    <!--INFO PRINCIPAL-->
+    <main class="flex-container">
+        <div class="text-content">
+            <section>
+                <h2>¿Qué es la ansiedad?</h2>
+                <p>
+                    La ansiedad es una respuesta natural del cuerpo ante situaciones estresantes o peligrosas. Es una emoción que todos experimentamos en algún momento y puede ser útil en pequeñas dosis, ya que nos ayuda a reaccionar rápidamente y a enfrentar desafíos. Sin embargo, cuando la ansiedad se vuelve constante o excesiva, puede convertirse en un trastorno que afecta significativamente la vida diaria.
+                </p>
+            </section>
+
+            <section>
+                <p>
+                    La mayoría de las personas con ansiedad pueden sentirse mejor con una combinación de terapia, medicamentos y cambios en el estilo de vida.
+                </p>
+                <ul>
+                    <li>Sentimientos Persistentes de Preocupación o Miedo.</li>
+                    <li>Inquietud o Nerviosismo.</li>
+                    <li>Fatiga Fácil.</li>
+                    <li>Dificultades para Concentrarse.</li>
+                    <li>Tensión Muscular.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Síntomas principales</h2>
+                <ul>
+                    <li>Preocupación Excesiva sobre situaciones cotidianas.</li>
+                    <li>Inquietud y Agitación.</li>
+                    <li>Fatiga y Cansancio fácilmente.</li>
+                    <li>Dificultad para Concentrarse.</li>
+                    <li>Tensión Muscular, especialmente en el cuello y hombros.</li>
+                    <li>Irritabilidad y cambios de humor frecuentes.</li>
+                    <li>Problemas de Sueño.</li>
+                    <li>Ataques de Pánico con síntomas físicos.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Tratamientos recomendados</h2>
+                <p>
+                    La ansiedad puede tratarse con terapia cognitivo-conductual, medicamentos ansiolíticos o antidepresivos, y técnicas de relajación como la meditación, respiración profunda, yoga y mindfulness. Mantener un estilo de vida saludable, con ejercicio, dieta balanceada y buen descanso, es crucial. Otras terapias complementarias como la acupuntura, aromaterapia o masajes pueden ofrecer alivio adicional. Además, el apoyo emocional de familiares, amigos o grupos de apoyo puede ser muy beneficioso.
+                </p>
+            </section>
+        </div>
+
+        <div class="classes__image">
+        <img src="{{ url_for('static', filename='css/G_Ansiedad.png') }}" alt="ansiedad">
+        <div class="classes__image--border"></div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+</html>
